@@ -22,6 +22,7 @@ const Bar = styled.div`
     height: 101px;
     width: 100%;
     position: fixed;
+    top: 0;
     padding-left: 65px;
     padding-right: 88px;
     display: flex;

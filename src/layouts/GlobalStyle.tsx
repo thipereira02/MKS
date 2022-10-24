@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		line-height: 1;
 		font-family: 'Montserrat', sans-serif;
+		background-color: #E5E5E5;
 	}
 	ol, ul {
 		list-style: none;
