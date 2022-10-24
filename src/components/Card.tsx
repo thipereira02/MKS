@@ -3,20 +3,29 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { FiShoppingBag } from "react-icons/fi";
 
+import SkeletonCard from './SkeletonCard';
+
 export default function Card(){
     const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         axios.get('https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=50&sortBy=id&orderBy=DESC')
         .then((response) => {
-            setProducts(response.data.products);
+            setLoading(true);
+            const timing = setTimeout(() => {
+                setProducts(response.data.products);
+                setLoading(false);
+            }, 4000);
+            return () => clearTimeout(timing);
         });
     }, []);
 
     return(
         <>
-        {products.map((p,i) => (
-            <ProductCard key={i}>
+        {loading && <SkeletonCard />}
+        {!loading && products.map((p,i) => (
+            <Container key={i}>
                 <img src={p.photo} alt={p.name} />
                 <NameAndPrice>
                     <h3>{p.name}</h3>
@@ -29,13 +38,13 @@ export default function Card(){
                     <FiShoppingBag color='#FFF' size={'15px'}/>
                     <h1>COMPRAR</h1>
                 </Button>
-            </ProductCard>
+            </Container>
         ))}
         </>
     );
 }
 
-const ProductCard = styled.div`
+const Container = styled.div`
     height: 285px;
     width: 217.56px;
     border-radius: 8px;
@@ -50,7 +59,6 @@ const ProductCard = styled.div`
     img{
         height: 138px;
         width: 111px;
-        margin-bottom: 14px;
     }
 
     p{
@@ -70,6 +78,7 @@ const NameAndPrice = styled.div`
     justify-content: space-between;
     padding-left: 14px;
     padding-right: 12px;
+    margin-top: 14px;
 
     h3{
         font-size: 16px;
