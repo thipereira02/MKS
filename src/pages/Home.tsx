@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 import Header from "../components/Header";
-import Card from "../components/Card";
+import ProductCard from "../components/ProductCard";
+import Cart from "../components/Cart";
 import Footer from "../components/Footer";
 
 export default function App() {
@@ -9,8 +10,9 @@ export default function App() {
         <>
           <Header />
           <Body>
-            <Card />
+            <ProductCard />
           </Body>
+          <Cart />
           <Footer />
         </>
     );
