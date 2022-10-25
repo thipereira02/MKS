@@ -18,6 +18,9 @@ export default function CartProduct() {
                 </Buttons>
             </Quantity>
             <p>R$5000</p>
+            <RemoveButton>
+                X
+            </RemoveButton>
         </Product>
     );
 }
@@ -33,6 +36,7 @@ const Product = styled.div`
     align-items: center;
     padding-left: 23px;
     padding-right: 30px;
+    position: relative;
 
     img{
        height: 61px;
@@ -83,4 +87,20 @@ const Buttons = styled.div`
 const Separator = styled.div`
     height: 60%;
     border: 0.2px solid #BFBFBF;
+`;
+
+const RemoveButton = styled.div`
+    width: 18px;
+    height: 18px;
+    background-color: #000;
+    border-radius: 50%;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -6px;
+    right: -6px;
 `;
