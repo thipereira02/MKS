@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import Header from "../components/Header";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 
 export default function App() {
     return (
@@ -10,6 +11,7 @@ export default function App() {
           <Body>
             <Card />
           </Body>
+          <Footer />
         </>
     );
 }
