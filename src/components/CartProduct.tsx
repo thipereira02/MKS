@@ -17,7 +17,7 @@ export default function CartProduct() {
                     <p>+</p>
                 </Buttons>
             </Quantity>
-            <p>R$5000</p>
+            <Price>R$5000</Price>
             <RemoveButton>
                 X
             </RemoveButton>
@@ -87,6 +87,12 @@ const Buttons = styled.div`
 const Separator = styled.div`
     height: 60%;
     border: 0.2px solid #BFBFBF;
+`;
+
+const Price = styled.p`
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
 `;
 
 const RemoveButton = styled.div`

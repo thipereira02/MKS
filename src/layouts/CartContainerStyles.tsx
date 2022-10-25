@@ -25,11 +25,11 @@ export const Container = styled.div<CartContainerProps>`
         0% { transform: translateX(100%); }
     }
 
-    @-moz-keyframes fadeIn {
+    @-webkit-keyframes fadeIn {
         0% { transform: translateX(100%); }
     }
 
-    @-webkit-keyframes fadeIn {
+    @-moz-keyframes fadeIn {
         0% { transform: translateX(100%); }
     }
 
