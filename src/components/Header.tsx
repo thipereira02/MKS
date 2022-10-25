@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function Header() {
+export default function Header({opened, setOpened}: {opened: boolean, setOpened: Function}) {
+    console.log(opened)
+
     return (
         <Bar>
             <Logo>
                 <h1>MKS</h1>
                 <h2>Sistemas</h2>
             </Logo>
-            <Cart>
+            <Cart onClick={() => (setOpened(!opened))}>
                 <FaShoppingCart />
                 <p>0</p>
             </Cart>
@@ -28,6 +30,7 @@ const Bar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
 `;
 
 const Logo = styled.div`

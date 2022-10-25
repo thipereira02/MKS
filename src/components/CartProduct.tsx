@@ -103,4 +103,5 @@ const RemoveButton = styled.div`
     position: absolute;
     top: -6px;
     right: -6px;
+    cursor: pointer;
 `;

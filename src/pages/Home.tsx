@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import Header from "../components/Header";
@@ -6,13 +7,15 @@ import Cart from "../components/Cart";
 import Footer from "../components/Footer";
 
 export default function App() {
+    const [opened, setOpened] = useState(false);
+
     return (
         <>
-          <Header />
+          <Header opened={opened} setOpened={setOpened} />
           <Body>
             <ProductCard />
           </Body>
-          <Cart />
+          <Cart opened={opened} setOpened={setOpened} />
           <Footer />
         </>
     );
