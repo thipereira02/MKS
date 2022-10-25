@@ -30,7 +30,6 @@ const Bar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
 `;
 
 const Logo = styled.div`
@@ -61,6 +60,7 @@ const Cart = styled.div`
     align-items: center;
     padding-left: 15px;
     padding-right: 27px;
+    cursor: pointer;
 
     p{
         font-size: 18px;

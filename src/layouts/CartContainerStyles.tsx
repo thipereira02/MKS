@@ -15,4 +15,29 @@ export const Container = styled.div<CartContainerProps>`
     position: fixed;
     top: 0;
     right: 0;
+    animation: fadeIn 1.5s;
+    -webkit-animation: fadeIn 1.5s;
+    -moz-animation: fadeIn 1.5s;
+    -o-animation: fadeIn 1.5s;
+    -ms-animation: fadeIn 1.5s;
+
+    @keyframes fadeIn {
+        0% { transform: translateX(100%); }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% { transform: translateX(100%); }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% { transform: translateX(100%); }
+    }
+
+    @-o-keyframes fadeIn {
+        0% { transform: translateX(100%); }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% { transform: translateX(100%); }
+    }
 `;
