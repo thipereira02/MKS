@@ -45,8 +45,8 @@ export default function Card(){
 }
 
 const Container = styled.div`
-    height: 285px;
-    width: 217.56px;
+    max-height: 285px;
+    max-width: 217.56px;
     border-radius: 8px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
     background-color: #FFF;

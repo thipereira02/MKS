@@ -16,9 +16,8 @@ export default function App() {
 
 const Body = styled.div`
   margin-top: 217px;
-  padding-left: 247px;
-  padding-right: 255px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  padding-left: 15%;
+  padding-right: 10%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 `;
