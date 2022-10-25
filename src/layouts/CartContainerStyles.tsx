@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface ContainerProps {
+interface CartContainerProps {
     display: boolean;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div<CartContainerProps>`
     display: ${props => props.display ? "" : "none"};
     height: 100vh;
     width: 486px;

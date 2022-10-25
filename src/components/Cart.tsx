@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import CartProduct from "./CartProduct";
-import { Container } from "../layouts/Styles";
+import { Container } from "../layouts/CartContainerStyles";
 
 export default function Cart({opened, setOpened}: {opened: boolean, setOpened: Function}) {
     return(
