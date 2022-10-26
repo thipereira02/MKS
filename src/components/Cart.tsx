@@ -3,19 +3,17 @@ import styled from "styled-components";
 import CartProduct from "./CartProduct";
 import { Container } from "../layouts/CartContainerStyle";
 
-export default function Cart({opened, setOpened}: {opened: boolean, setOpened: Function}) {
+export default function Cart({opened, setOpened}: {opened: boolean, setOpened: Function}) {  
     return(
         <>
             <Container display={opened}>
                 <Title>
                     <h1>Carrinho<br /> de compras</h1>
-                    <div onClick={() => setOpened(!opened)}>X</div>
+                    <div onClick={() => setOpened(false)}>
+                        X
+                    </div>
                 </Title>
                 <Products>
-                    <CartProduct />
-                    <CartProduct />
-                    <CartProduct />
-                    <CartProduct />
                     <CartProduct />
                 </ Products>
                 <CartTotal>

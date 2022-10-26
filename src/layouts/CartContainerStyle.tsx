@@ -5,10 +5,9 @@ interface CartContainerProps {
 }
 
 export const Container = styled.div<CartContainerProps>`
-    display: ${props => props.display ? "" : "none"};
+    display: ${props => props.display ? "flex" : "none"};
     height: 100vh;
     width: 486px;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #0F52BA;
