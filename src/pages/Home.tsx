@@ -9,8 +9,6 @@ import Footer from "../components/Footer";
 export default function App() {
     const [opened, setOpened] = useState(false);
 
-    console.log(opened);
-
     return (
         <>
           <Header opened={opened} setOpened={setOpened} />
