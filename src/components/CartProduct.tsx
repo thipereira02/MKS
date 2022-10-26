@@ -34,14 +34,15 @@ const Product = styled.div`
     background-color: #FFF;
     display: flex;
     align-items: center;
+    margin-left: 47px;
     padding-left: 23px;
     padding-right: 30px;
     position: relative;
 
     img{
-       height: 61px;
-       width: 50px;
-       margin-right: 21px;
+        height: 61px;
+        width: 50px;
+        margin-right: 21px;
     }
 `;
 

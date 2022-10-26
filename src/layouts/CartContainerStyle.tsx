@@ -8,10 +8,12 @@ export const Container = styled.div<CartContainerProps>`
     display: ${props => props.display ? "" : "none"};
     height: 100vh;
     width: 486px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #0F52BA;
     box-shadow: -5px 0px 6px rgba(0, 0, 0, 0.13);
     padding-top: 36px;
-    padding-left: 47px;
     position: fixed;
     top: 0;
     right: 0;
