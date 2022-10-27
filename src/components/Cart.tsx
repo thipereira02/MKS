@@ -1,15 +1,19 @@
+import { useContext } from "react";
 import styled from "styled-components";
 
 import CartProduct from "./CartProduct";
 import { Container } from "../layouts/CartContainerStyle";
+import ActiveCartContext from "../contexts/ActiveCartContext";
 
-export default function Cart({opened, setOpened}: {opened: boolean, setOpened: Function}) {  
+export default function Cart() {
+    const { isActive, setIsActive } = useContext(ActiveCartContext);
+    
     return(
         <>
-            <Container display={opened}>
+            <Container display={isActive}>
                 <Title>
                     <h1>Carrinho<br /> de compras</h1>
-                    <div onClick={() => setOpened(false)}>
+                    <div onClick={() => setIsActive(false)}>
                         X
                     </div>
                 </Title>

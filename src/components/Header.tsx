@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
 import { FaShoppingCart } from "react-icons/fa";
 import { RootState } from "../store/modules/rootReducer";
-import { connect } from "react-redux";
+import ActiveCartContext from "../contexts/ActiveCartContext";
 
 const mapStateToProps = (state: RootState) => ({
     cartQuantity: state.cart.products.length
 });
 
 function Header({cartQuantity}: ReturnType<typeof mapStateToProps>){
+    const { setIsActive } = useContext(ActiveCartContext);
 
     return (
         <Bar>
@@ -15,7 +19,7 @@ function Header({cartQuantity}: ReturnType<typeof mapStateToProps>){
                 <h1>MKS</h1>
                 <h2>Sistemas</h2>
             </Logo>
-            <Cart>
+            <Cart onClick={() => setIsActive(true)}>
                 <FaShoppingCart />
                 <p>{cartQuantity}</p>
             </Cart>
