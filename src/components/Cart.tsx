@@ -1,13 +1,26 @@
 import { useContext } from "react";
 import styled from "styled-components";
+import { RootState } from "../store/modules/rootReducer";
+import { connect, DispatchProp } from "react-redux";
 
 import { Container } from "../layouts/CartContainerStyle";
 import CartProductList from "./CartProductList";
 import ActiveCartContext from "../contexts/ActiveCartContext";
 
-export default function Cart() {
+const mapStateToProps = (state: RootState) => ({
+    total: state.cart.products.reduce((acc, p) => {
+        return acc + parseFloat(p.price) * p.qty;
+    }, 0)
+});
+
+type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
+
+function Cart(props: Props) {
     const { isActive, setIsActive } = useContext(ActiveCartContext);
+    const { total } = props;
     
+    console.log(total)
+
     return(
         <>
             <Container display={isActive}>
@@ -21,7 +34,7 @@ export default function Cart() {
                 <CartTotal>
                     <FinalPrice>
                         <p>Total:</p>
-                        <p>R$798</p>
+                        <p>R${total}</p>
                     </FinalPrice>
                     <Finish>
                         <p>Finalizar compra</p>
@@ -88,3 +101,5 @@ const Finish = styled.div`
     align-items: center;
     cursor: pointer;
 `;
+
+export default connect(mapStateToProps)(Cart);

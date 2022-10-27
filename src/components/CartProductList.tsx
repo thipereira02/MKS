@@ -19,16 +19,13 @@ const mapStateToProps = (state: RootState) => ({
     products: state.cart.products.map(p => ({
         ...p,
         subtotal: parseFloat(p.price) * p.qty
-    })),
-    total: state.cart.products.reduce((acc, p) => {
-        return acc + parseFloat(p.price) * p.qty;
-    }, 0)
+    }))
 });
 
 type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
 
 function CartProductList(props: Props) {
-    const { products, dispatch, total } = props;
+    const { products, dispatch } = props;
 
     function incrementProduct(product: IProduct){
         dispatch(CartActions.updateQty(product.id, product.qty + 1));
@@ -50,11 +47,11 @@ function CartProductList(props: Props) {
                     <Quantity>
                         Qtd:
                         <Buttons>
-                            <p onClick={() => decrementProduct(p)}>-</p>
+                            <span onClick={() => decrementProduct(p)}>-</span>
                             <Separator />
                             <p>{p.qty}</p>
                             <Separator />
-                            <p onClick={() => incrementProduct(p)}>+</p>
+                            <span onClick={() => incrementProduct(p)}>+</span>
                         </Buttons>
                     </Quantity>
                     <Price>R${p.price.slice(0,-3)}</Price>
