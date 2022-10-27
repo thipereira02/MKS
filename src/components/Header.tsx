@@ -7,8 +7,8 @@ const mapStateToProps = (state: RootState) => ({
     cartQuantity: state.cart.products.length
 });
 
+function Header({cartQuantity}: ReturnType<typeof mapStateToProps>){
 
-function Header({cartQuantity}: ReturnType<typeof mapStateToProps>) {
     return (
         <Bar>
             <Logo>

@@ -1,30 +1,16 @@
-import { useState } from "react";
-import styled from "styled-components";
+import React from 'react';
+import { Provider } from 'react-redux';
+import GlobalStyle from './layouts/GlobalStyle';
+import Home from './pages/Home';
+import store from './store/store';
 
-import Header from "./components/Header";
-import ProductCard from "./components/ProductCard";
-import Cart from "./components/Cart";
-import Footer from "./components/Footer";
-
-export default function App() {
-    const [opened, setOpened] = useState(false);
-
+const App: React.FC = () => {
     return (
-        <>
-          <Header />
-          <Body>
-            <ProductCard />
-          </Body>
-          <Cart opened={opened} setOpened={setOpened} />
-          <Footer />
-        </>
+        <Provider store={store}>
+                <GlobalStyle />
+                <Home />
+        </Provider>
     );
-}
+};
 
-const Body = styled.div`
-  margin-top: 217px;
-  padding-left: 15%;
-  padding-right: 10%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-`;
+export default App;
