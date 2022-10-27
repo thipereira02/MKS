@@ -1,5 +1,5 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QTY, CartActionTypes } from "./types";
-import { IProduct } from "../../../types";
+import { IProduct } from "../../../types/ProductInterface";
 
 export function addToCart(newProduct: IProduct): CartActionTypes {
     return {

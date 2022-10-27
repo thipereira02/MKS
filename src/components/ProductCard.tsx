@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FiShoppingBag } from "react-icons/fi";
 
 import SkeletonCard from './SkeletonCard';
-import { IProduct } from '../types';
+import { IProduct } from '../types/ProductInterface';
 import { RootState } from '../store/modules/rootReducer';
 import * as CartActions from '../store/modules/cart/actions';
 

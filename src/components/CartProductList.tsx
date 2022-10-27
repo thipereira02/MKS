@@ -12,7 +12,7 @@ import {
         RemoveButton
     } from "../layouts/ProductCartStyle";
 import { RootState } from "../store/modules/rootReducer";
-import { IProduct } from "../types";
+import { IProduct } from "../types/ProductInterface";
 import * as CartActions from "../store/modules/cart/actions";
 
 const mapStateToProps = (state: RootState) => ({
