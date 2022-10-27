@@ -15,12 +15,14 @@ const mapStateToProps = (state: RootState) => ({
 
 type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
 
+interface FinishButtonProps {
+    disabled: boolean;
+}
+
 function Cart(props: Props) {
     const { isActive, setIsActive } = useContext(ActiveCartContext);
     const { total } = props;
     
-    console.log(total)
-
     return(
         <>
             <Container display={isActive}>
@@ -32,13 +34,15 @@ function Cart(props: Props) {
                 </Title>
                 <CartProductList />
                 <CartTotal>
-                    <FinalPrice>
-                        <p>Total:</p>
-                        <p>R${total}</p>
-                    </FinalPrice>
-                    <Finish>
+                    {total > 0 &&
+                        <FinalPrice>
+                            <p>Total:</p>
+                            <p>R${total}</p>
+                        </FinalPrice>
+                    }
+                    <FinishButton disabled={total === 0 ? true : false}>
                         <p>Finalizar compra</p>
-                    </Finish>
+                    </FinishButton>
                 </CartTotal>
             </Container>
         </>
@@ -89,17 +93,18 @@ const FinalPrice = styled.div`
     margin-bottom: 42px;    
 `;
 
-const Finish = styled.div`
+const FinishButton = styled.div<FinishButtonProps>`
     height: 97px;
     width: 100%;
     background-color: #000;
+    opacity: ${props => props.disabled ? 0.7 : 1};
     color: #FFF;
     font-size: 28px;
     font-weight: 700;
     display: flex; 
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    cursor: ${props => props.disabled ? "inherit": "pointer"};
 `;
 
 export default connect(mapStateToProps)(Cart);
