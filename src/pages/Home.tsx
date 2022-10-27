@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 import Header from "../components/Header";
@@ -6,16 +7,16 @@ import Cart from "../components/Cart";
 import Footer from "../components/Footer";
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-            <Body>
-                <ProductCard />
-            </Body>
-            <Cart />
-            <Footer />
-        </>
-    );
+	return (
+		<>
+			<Header />
+			<Body>
+				<ProductCard />
+			</Body>
+			<Cart />
+			<Footer />
+		</>
+	);
 }
 
 const Body = styled.div`

@@ -1,28 +1,29 @@
+import React from "react";
 import Skeleton from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css'
+import "react-loading-skeleton/dist/skeleton.css";
 import styled from "styled-components";
 
 export default function SkeletonCard() {
-    return (
-        <>
-            {Array(8)
-                .fill(0)
-                .map((p, i) => (
-                    <SkeletonCardContainer key={i}>
-                        <div>
-                            <Skeleton duration={1} height={138} width={111} />
-                        </div>
-                        <SkeletonNameAndPrice>
-                            <Skeleton duration={1} height={30} width={192} />
-                        </SkeletonNameAndPrice>
-                        <SkeletonDescription>
-                            <Skeleton duration={1} height={45} width={192} />
-                        </SkeletonDescription>
-                    </SkeletonCardContainer>
-                ))
-            }
-        </>
-    );
+	return (
+		<>
+			{Array(8)
+				.fill(0)
+				.map((p, i) => (
+					<SkeletonCardContainer key={i}>
+						<div>
+							<Skeleton duration={1} height={138} width={111} />
+						</div>
+						<SkeletonNameAndPrice>
+							<Skeleton duration={1} height={30} width={192} />
+						</SkeletonNameAndPrice>
+						<SkeletonDescription>
+							<Skeleton duration={1} height={45} width={192} />
+						</SkeletonDescription>
+					</SkeletonCardContainer>
+				))
+			}
+		</>
+	);
 }
 
 const SkeletonCardContainer = styled.div`

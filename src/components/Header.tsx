@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -7,24 +7,24 @@ import { RootState } from "../store/modules/rootReducer";
 import ActiveCartContext from "../contexts/ActiveCartContext";
 
 const mapStateToProps = (state: RootState) => ({
-    cartQuantity: state.cart.products.length
+	cartQuantity: state.cart.products.length
 });
 
 function Header({cartQuantity}: ReturnType<typeof mapStateToProps>){
-    const { setIsActive } = useContext(ActiveCartContext);
+	const { setIsActive } = useContext(ActiveCartContext);
 
-    return (
-        <Bar>
-            <Logo>
-                <h1>MKS</h1>
-                <h2>Sistemas</h2>
-            </Logo>
-            <Cart onClick={() => setIsActive(true)}>
-                <FaShoppingCart />
-                <p>{cartQuantity}</p>
-            </Cart>
-        </Bar>
-    );
+	return (
+		<Bar>
+			<Logo>
+				<h1>MKS</h1>
+				<h2>Sistemas</h2>
+			</Logo>
+			<Cart onClick={() => setIsActive(true)}>
+				<FaShoppingCart />
+				<p>{cartQuantity}</p>
+			</Cart>
+		</Bar>
+	);
 }
 
 const Bar = styled.div`

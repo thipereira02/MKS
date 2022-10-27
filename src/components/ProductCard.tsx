@@ -1,74 +1,74 @@
-import { useEffect, useState } from 'react';
-import { connect, DispatchProp } from 'react-redux';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { connect, DispatchProp } from "react-redux";
+import styled from "styled-components";
+import axios from "axios";
 import { FiShoppingBag } from "react-icons/fi";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-import SkeletonCard from './SkeletonCard';
-import { IProduct } from '../types/ProductInterface';
-import { RootState } from '../store/modules/rootReducer';
-import * as CartActions from '../store/modules/cart/actions';
+import SkeletonCard from "./SkeletonCard";
+import { IProduct } from "../types/ProductInterface";
+import { RootState } from "../store/modules/rootReducer";
+import * as CartActions from "../store/modules/cart/actions";
 
 type qtyProduct = { [key: number]: any };
 const qtyObject: qtyProduct = {};
 const mapStateToProps = (state: RootState) => ({
-    cart: state.cart.products,
-    qty: state.cart.products.reduce((quantity, currentValue) => {
-        quantity[currentValue.id] = currentValue.qty;
-        return quantity;
-        }, qtyObject)
+	cart: state.cart.products,
+	qty: state.cart.products.reduce((quantity, currentValue) => {
+		quantity[currentValue.id] = currentValue.qty;
+		return quantity;
+	}, qtyObject)
 });
 
 type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
 
 function ProductCard(props: Props) {
-    const [products, setProducts] = useState<IProduct[]>([]);
-    const [loading, setLoading] = useState(false);
+	const [products, setProducts] = useState<IProduct[]>([]);
+	const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        axios.get('https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=50&sortBy=id&orderBy=DESC')
-        .then((response) => {
-            setLoading(true);
-            const timing = setTimeout(() => {
-                setProducts(response.data.products);
-                setLoading(false);
-            }, 3000);
-            return () => clearTimeout(timing);
-        });
-    }, []);
+	useEffect(() => {
+		axios.get("https://mks-frontend-challenge-api.herokuapp.com/api/v1/products?page=1&rows=50&sortBy=id&orderBy=DESC")
+			.then((response) => {
+				setLoading(true);
+				const timing = setTimeout(() => {
+					setProducts(response.data.products);
+					setLoading(false);
+				}, 3000);
+				return () => clearTimeout(timing);
+			});
+	}, []);
 
-    function addProductToCart(product: IProduct){
-        toast.success('Produto adicionado ao carrinho!');
-        const { dispatch } = props;
-        dispatch(
-            CartActions.addToCart({
-                ...product
-            })
-        );
-    }
+	function addProductToCart(product: IProduct){
+		const { dispatch } = props;
+		dispatch(
+			CartActions.addToCart({
+				...product
+			})
+		);
+		toast.success("Produto adicionado ao carrinho!");
+	}
 
-    return(
-        <>
-        {loading && <SkeletonCard />}
-        {!loading && products.map((p,i) => (
-            <Container key={i}>
-                <img src={p.photo} alt={p.name} />
-                <NameAndPrice>
-                    <h3>{p.name}</h3>
-                    <div>
+	return(
+		<>
+			{loading && <SkeletonCard />}
+			{!loading && products.map((p,i) => (
+				<Container key={i}>
+					<img src={p.photo} alt={p.name} />
+					<NameAndPrice>
+						<h3>{p.name}</h3>
+						<div>
                         R${p.price.slice(0,-3)}
-                    </div>
-                </NameAndPrice>
-                <p>{p.description}</p>
-                <Button onClick={() => {addProductToCart(p)}}>
-                    <FiShoppingBag color='#FFF' size={'15px'}/>
-                    <h1>COMPRAR</h1>
-                </Button>
-            </Container>
-        ))}
-        </>
-    );
+						</div>
+					</NameAndPrice>
+					<p>{p.description}</p>
+					<Button onClick={() => {addProductToCart(p);}}>
+						<FiShoppingBag color='#FFF' size={"15px"}/>
+						<h1>COMPRAR</h1>
+					</Button>
+				</Container>
+			))}
+		</>
+	);
 }
 
 const Container = styled.div`

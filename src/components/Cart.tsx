@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { RootState } from "../store/modules/rootReducer";
 import { connect, DispatchProp } from "react-redux";
@@ -8,9 +8,9 @@ import CartProductList from "./CartProductList";
 import ActiveCartContext from "../contexts/ActiveCartContext";
 
 const mapStateToProps = (state: RootState) => ({
-    total: state.cart.products.reduce((acc, p) => {
-        return acc + parseFloat(p.price) * p.qty;
-    }, 0)
+	total: state.cart.products.reduce((acc, p) => {
+		return acc + parseFloat(p.price) * p.qty;
+	}, 0)
 });
 
 type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
@@ -20,33 +20,33 @@ interface FinishButtonProps {
 }
 
 function Cart(props: Props) {
-    const { isActive, setIsActive } = useContext(ActiveCartContext);
-    const { total } = props;
+	const { isActive, setIsActive } = useContext(ActiveCartContext);
+	const { total } = props;
     
-    return(
-        <>
-            <Container display={isActive}>
-                <Title>
-                    <h1>Carrinho<br /> de compras</h1>
-                    <div onClick={() => setIsActive(false)}>
+	return(
+		<>
+			<Container display={isActive}>
+				<Title>
+					<h1>Carrinho<br /> de compras</h1>
+					<div onClick={() => setIsActive(false)}>
                         X
-                    </div>
-                </Title>
-                <CartProductList />
-                <CartTotal>
-                    {total > 0 &&
+					</div>
+				</Title>
+				<CartProductList />
+				<CartTotal>
+					{total > 0 &&
                         <FinalPrice>
-                            <p>Total:</p>
-                            <p>R${total}</p>
+                        	<p>Total:</p>
+                        	<p>R${total}</p>
                         </FinalPrice>
-                    }
-                    <FinishButton disabled={total > 0 ? false : true}>
-                        <p>Finalizar compra</p>
-                    </FinishButton>
-                </CartTotal>
-            </Container>
-        </>
-    );
+					}
+					<FinishButton disabled={total > 0 ? false : true}>
+						<p>Finalizar compra</p>
+					</FinishButton>
+				</CartTotal>
+			</Container>
+		</>
+	);
 }
 
 const Title = styled.div`
