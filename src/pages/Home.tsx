@@ -11,7 +11,7 @@ export default function App() {
 
     return (
         <>
-          <Header opened={opened} setOpened={setOpened} />
+          <Header setOpened={setOpened} />
           <Body>
             <ProductCard />
           </Body>

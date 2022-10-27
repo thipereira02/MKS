@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
 import { FaShoppingCart } from "react-icons/fa";
 
-export default function Header({opened, setOpened}: {opened: boolean, setOpened: Function}) {
+export default function Header({setOpened}: {setOpened: Function}) {
     return (
         <Bar>
             <Logo>
