@@ -3,6 +3,7 @@ import { connect, DispatchProp } from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import { FiShoppingBag } from "react-icons/fi";
+import { toast } from 'react-toastify';
 
 import SkeletonCard from './SkeletonCard';
 import { IProduct } from '../types/ProductInterface';
@@ -38,6 +39,7 @@ function ProductCard(props: Props) {
     }, []);
 
     function addProductToCart(product: IProduct){
+        toast.success('Produto adicionado ao carrinho!');
         const { dispatch } = props;
         dispatch(
             CartActions.addToCart({
@@ -59,7 +61,7 @@ function ProductCard(props: Props) {
                     </div>
                 </NameAndPrice>
                 <p>{p.description}</p>
-                <Button onClick={() => addProductToCart(p)}>
+                <Button onClick={() => {addProductToCart(p)}}>
                     <FiShoppingBag color='#FFF' size={'15px'}/>
                     <h1>COMPRAR</h1>
                 </Button>

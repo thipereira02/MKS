@@ -40,7 +40,7 @@ function Cart(props: Props) {
                             <p>R${total}</p>
                         </FinalPrice>
                     }
-                    <FinishButton disabled={total === 0 ? true : false}>
+                    <FinishButton disabled={total > 0 ? false : true}>
                         <p>Finalizar compra</p>
                     </FinishButton>
                 </CartTotal>
