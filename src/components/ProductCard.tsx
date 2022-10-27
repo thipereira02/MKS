@@ -1,12 +1,28 @@
 import { useEffect, useState } from 'react';
+import { connect, DispatchProp } from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import { FiShoppingBag } from "react-icons/fi";
 
 import SkeletonCard from './SkeletonCard';
+import { IProduct } from '../types';
+import { RootState } from '../store/modules/rootReducer';
+import * as CartActions from '../store/modules/cart/actions';
 
-export default function Card(){
-    const [products, setProducts] = useState<any[]>([]);
+type qtyProduct = { [key: number]: any };
+const qtyObject: qtyProduct = {};
+const mapStateToProps = (state: RootState) => ({
+    cart: state.cart.products,
+    qty: state.cart.products.reduce((quantity, currentValue) => {
+        quantity[currentValue.id] = currentValue.qty;
+        return quantity;
+        }, qtyObject)
+});
+
+type Props = ReturnType<typeof mapStateToProps> & DispatchProp;
+
+function ProductCard(props: Props) {
+    const [products, setProducts] = useState<IProduct[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -21,6 +37,15 @@ export default function Card(){
         });
     }, []);
 
+    function addProductToCart(product: IProduct){
+        const { dispatch } = props;
+        dispatch(
+            CartActions.addToCart({
+                ...product
+            })
+        );
+    }
+
     return(
         <>
         {loading && <SkeletonCard />}
@@ -34,7 +59,7 @@ export default function Card(){
                     </div>
                 </NameAndPrice>
                 <p>{p.description}</p>
-                <Button>
+                <Button onClick={() => addProductToCart(p)}>
                     <FiShoppingBag color='#FFF' size={'15px'}/>
                     <h1>COMPRAR</h1>
                 </Button>
@@ -120,3 +145,5 @@ const Button = styled.div`
         margin-left: 14px;
     }
 `;
+
+export default connect(mapStateToProps)(ProductCard);

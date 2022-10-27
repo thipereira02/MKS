@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import Header from "../components/Header";
-import ProductCard from "../components/ProductCard";
-import Cart from "../components/Cart";
-import Footer from "../components/Footer";
+import Header from "./components/Header";
+import ProductCard from "./components/ProductCard";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 export default function App() {
     const [opened, setOpened] = useState(false);
