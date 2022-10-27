@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
 
-import CartProduct from "./CartProduct";
 import { Container } from "../layouts/CartContainerStyle";
+import CartProductList from "./CartProductList";
 import ActiveCartContext from "../contexts/ActiveCartContext";
 
 export default function Cart() {
@@ -17,9 +17,7 @@ export default function Cart() {
                         X
                     </div>
                 </Title>
-                <Products>
-                    <CartProduct />
-                </ Products>
+                <CartProductList />
                 <CartTotal>
                     <FinalPrice>
                         <p>Total:</p>
@@ -60,31 +58,6 @@ const Title = styled.div`
         font-size: 22px;
         font-weight: 400;
         cursor: pointer;
-    }
-`;
-
-const Products = styled.ul`
-    height: 100%;
-    list-style-type: none;
-    overflow: scroll;
-    overflow-x: hidden;
-    padding-top: 10px;
-
-    :hover::-webkit-scrollbar-thumb {
-        background-color: #BFBFBF;
-    }
-
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #0F52BA;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 20px;
-        border: 1px solid #0F52BA;
     }
 `;
 

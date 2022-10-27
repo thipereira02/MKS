@@ -32,7 +32,7 @@ function ProductCard(props: Props) {
             const timing = setTimeout(() => {
                 setProducts(response.data.products);
                 setLoading(false);
-            }, 4000);
+            }, 3000);
             return () => clearTimeout(timing);
         });
     }, []);
