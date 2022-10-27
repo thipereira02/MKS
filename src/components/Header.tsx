@@ -1,16 +1,23 @@
 import styled from "styled-components";
 import { FaShoppingCart } from "react-icons/fa";
+import { RootState } from "../store/modules/rootReducer";
+import { connect } from "react-redux";
 
-export default function Header({setOpened}: {setOpened: Function}) {
+const mapStateToProps = (state: RootState) => ({
+    cartQuantity: state.cart.products.length
+});
+
+
+function Header({cartQuantity}: ReturnType<typeof mapStateToProps>) {
     return (
         <Bar>
             <Logo>
                 <h1>MKS</h1>
                 <h2>Sistemas</h2>
             </Logo>
-            <Cart onClick={() => (setOpened(true))}>
+            <Cart>
                 <FaShoppingCart />
-                <p>0</p>
+                <p>{cartQuantity}</p>
             </Cart>
         </Bar>
     );
@@ -64,3 +71,5 @@ const Cart = styled.div`
         font-weight: 700;
     }
 `;
+
+export default connect(mapStateToProps)(Header);
