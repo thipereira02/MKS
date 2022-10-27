@@ -1,10 +1,8 @@
 import produce from "immer";
 import { CartActionTypes, ICartState } from "./types";
 
-const initialState: ICartState = { products: [] };
-
 export default function cartReducer(
-    state: typeof initialState,
+    state: ICartState = { products: [] },
     action: CartActionTypes
 ): ICartState {
     switch (action.type) {
