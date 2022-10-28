@@ -10,6 +10,7 @@ import { IProduct } from "../types/ProductInterface";
 import { RootState } from "../store/modules/rootReducer";
 import * as CartActions from "../store/modules/cart/actions";
 
+// eslint-disable-next-line
 type qtyProduct = { [key: number]: any };
 const qtyObject: qtyProduct = {};
 const mapStateToProps = (state: RootState) => ({

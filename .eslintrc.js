@@ -21,6 +21,7 @@ module.exports = {
 		"@typescript-eslint"
 	],
 	"rules": {
+		"@typescript-eslint/no-explicit-any": "off",
 		"no-mixed-spaces-and-tabs": 0, // disable rule
 		"indent": [
 			"error",
