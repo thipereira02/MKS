@@ -96,7 +96,7 @@ const FinalPrice = styled.div`
 const FinishButton = styled.div<FinishButtonProps>`
     height: 97px;
     width: 100%;
-    background-color: #000;
+    background-color: ${props => props.disabled ? "#5A5858" : "#000"};
     opacity: ${props => props.disabled ? 0.7 : 1};
     color: #FFF;
     font-size: 28px;
