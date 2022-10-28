@@ -147,6 +147,10 @@ const Button = styled.div`
         color: #FFF;
         margin-left: 14px;
     }
+
+    :hover{
+        opacity: 0.7;
+    }
 `;
 
 export default connect(mapStateToProps)(ProductCard);

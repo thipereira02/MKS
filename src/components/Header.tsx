@@ -70,6 +70,15 @@ const Cart = styled.div`
     padding-right: 27px;
     cursor: pointer;
 
+    :hover{
+        background-color: #d2d2d3;
+        animation: effect .5s;
+        @keyframes effect {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+    }
+
     p{
         font-size: 18px;
         font-weight: 700;

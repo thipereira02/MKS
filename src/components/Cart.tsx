@@ -105,6 +105,10 @@ const FinishButton = styled.div<FinishButtonProps>`
     justify-content: center;
     align-items: center;
     cursor: ${props => props.disabled ? "inherit": "pointer"};
+
+    :hover{
+        opacity: 0.9;
+    }
 `;
 
 export default connect(mapStateToProps)(Cart);

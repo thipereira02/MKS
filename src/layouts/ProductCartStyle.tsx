@@ -129,4 +129,12 @@ export const RemoveButton = styled.div`
     top: -6px;
     right: -6px;
     cursor: pointer;
+
+    :hover{
+        animation: effect .5s;
+        @keyframes effect {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+    }
 `;
